@@ -2,9 +2,23 @@
 from string import Template
 from typing import Optional, Callable
 from abc import ABC, abstractmethod
-from datetime import datetime, date
-from dateutil.relativedelta import relativedelta
 import urllib.request, os
+import sys
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Shared Component Location
+
+# COMMAND ----------
+
+def register_component_location(location: str):
+    sys.path.append(location) 
+
+register_component_location("/Volume/Shared/nyc_project/transformations")
+
+from utils.app_entities import MonthsAgo
+
 
 # COMMAND ----------
 
@@ -18,13 +32,9 @@ trips_base_path = dbutils.widgets.get("trips_out_base_dir")
 
 # COMMAND ----------
 
-def _processing_date():
-    return date.today() - relativedelta(months=3)
-
-# COMMAND ----------
-
 # MAGIC %md
-# MAGIC ## Input Data
+# MAGIC ## Input Data (Parameters + RemoteResource(resource_location))
+# MAGIC Parameters(DynamicParams, StaticParams)
 
 # COMMAND ----------
 
@@ -57,7 +67,7 @@ def trips_resource(url_trips: str) -> bytes:
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Output Data
+# MAGIC ## Output Data -> BinaryTrips(trips).save(output_loc)
 
 # COMMAND ----------
 
@@ -150,8 +160,7 @@ def ingest_monthly_trips(m_params):
 # MAGIC ## High Level Steps
 
 # COMMAND ----------
-
-processing_date = _processing_date()
+processing_date = MonthsAgo.from_today().date()
 print(f"processing_date: {processing_date}")
 _monthly_params = monthly_params(processing_date.year, processing_date.month)
 continue_downstream = ingest_monthly_trips(_monthly_params)
