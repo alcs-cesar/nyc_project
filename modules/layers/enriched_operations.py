@@ -52,7 +52,6 @@ class DetailedLocations(Enriched):
         self.enriched = enriched
         self.zone = zone
 
-    @cached_property
     def data(self) -> DataFrame:
         pu = self.zone.alias('pu')
         do = self.zone.alias('do')
@@ -81,7 +80,6 @@ class TripDuration(Enriched):
     def __init__(self, enriched: Enriched):
         self.enriched = enriched
 
-    @cached_property
     def data(self):
         trips = self.enriched.data()
 
