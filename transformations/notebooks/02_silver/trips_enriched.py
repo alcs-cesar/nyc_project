@@ -26,7 +26,7 @@ register_project_root()
 from modules.layers.enriched_operations import Enriched, TripDuration, DetailedLocations, NoEnriched
 from modules.io.contracts import InputTrips, SaveTrips
 from modules.io.trips import MonthlyTrips
-from modules.io.app_entities import UnityTable
+from modules.io.unity_entities import UnityTable
 
 #############################################################
 ################ COMPOSABLE ENRICHED OPERATIONS #############
