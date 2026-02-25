@@ -18,6 +18,8 @@ def register_project_root():
     if project_root not in sys.path:
         sys.path.append(project_root) 
 
+register_project_root()
+
 from modules.utils.app_entities import MonthsAgo
 
 

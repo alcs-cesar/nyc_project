@@ -12,7 +12,7 @@ def register_project_root():
     if project_root not in sys.path:
         sys.path.append(project_root) 
 
-register_component_location()
+register_project_root()
 
 from modules.io.contracts import InputTrips
 from modules.io.unity_entities import UnityTable
