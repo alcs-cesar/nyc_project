@@ -11,7 +11,7 @@ from pyspark.sql.functions import lit, add_months
 from abc import ABC, abstractmethod
 from typing import Callable
 from pyspark.sql.functions import when, col
-
+import os
 import sys
 
 # COMMAND ----------
@@ -26,6 +26,8 @@ def register_project_root():
 
     if project_root not in sys.path:
         sys.path.append(project_root) 
+
+register_project_root()
 
 from modules.utils.app_entities import MonthsAgo
 from modules.io.contracts import InputTrips 
