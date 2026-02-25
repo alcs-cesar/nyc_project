@@ -37,7 +37,7 @@ class EnrichedTrips(Enriched):
         self.enriched = enriched
 
     def data(self) -> DataFrame:
-        self.enriched.data()
+        return self.enriched.data()
 
     def save(self, save_trips: SaveTrips):
         save_trips.save(self.data())
