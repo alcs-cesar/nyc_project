@@ -5,7 +5,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 from pyspark.sql import DataFrame, Column
 from pyspark.sql.functions import col, timestamp_diff, make_date, lit, add_months
-
+import os
 import sys
 
 # COMMAND ----------
@@ -20,6 +20,8 @@ def register_project_root():
 
     if project_root not in sys.path:
         sys.path.append(project_root) 
+
+register_project_root()
 
 from modules.layers.enriched_operations import Enriched, TripDuration, DetailedLocations, NoEnriched
 from modules.io.contracts import InputTrips, SaveTrips
