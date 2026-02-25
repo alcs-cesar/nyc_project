@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Callable
 from functools import cached_property
 from pyspark.sql import DataFrame
-
+from pyspark.sql.functions import timestamp_diff
 import sys, os
 
 # COMMAND ----------
