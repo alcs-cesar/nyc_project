@@ -1,18 +1,23 @@
 from typing import Callable
 from pyspark.sql import DataFrame, Column
 from pyspark.sql.functions import col, add_months, lit
+import sys
+import os
 
 ################ Import App Dependencies ################
 
-def register_component_location(location: str):
-    sys.path.append(location) 
+def register_project_root():
+    project_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 
-register_component_location("/Volume/Shared/nyc_project/transformations")
+    if project_root not in sys.path:
+        sys.path.append(project_root) 
 
-from io.contracts import InputTrips
-from io.unity_entities import UnityTable
-from utils.app_entities import MonthsAgo
-from utils.columns import DateAsColumn
+register_component_location()
+
+from modules.io.contracts import InputTrips
+from modules.io.unity_entities import UnityTable
+from modules.utils.app_entities import MonthsAgo
+from modules.utils.columns import DateAsColumn
 
 #########################################################
 

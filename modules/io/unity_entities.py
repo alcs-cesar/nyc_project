@@ -5,12 +5,13 @@ from pyspark.sql.functions import col, add_months, lit
 
 ################ Import App Dependencies ################
 
-def register_component_location(location: str):
-    sys.path.append(location) 
+def register_project_root():
+    project_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 
-register_component_location("/Volume/Shared/nyc_project/transformations")
+    if project_root not in sys.path:
+        sys.path.append(project_root) 
 
-from io.contracts import InputTrips, SaveTrips
+from modules.io.contracts import InputTrips, SaveTrips
 
 #########################################################
 

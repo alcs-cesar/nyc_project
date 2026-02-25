@@ -15,15 +15,16 @@ import sys
 
 # COMMAND ----------
 
-def register_component_location(location: str):
-    sys.path.append(location) 
+def register_project_root():
+    project_root = os.path.abspath(os.path.join(os.getcwd(), "../../.."))
 
-register_component_location("/Volume/Shared/nyc_project/transformations")
+    if project_root not in sys.path:
+        sys.path.append(project_root) 
 
-from layers.silver.enriched_operations import Enriched, TripDuration, DetailedLocations, NoEnriched
-from io.contracts import InputTrips, SaveTrips
-from io.trips import MonthlyTrips
-from io.app_entities import UnityTable
+from modules.layers.enriched_operations import Enriched, TripDuration, DetailedLocations, NoEnriched
+from modules.io.contracts import InputTrips, SaveTrips
+from modules.io.trips import MonthlyTrips
+from modules.io.app_entities import UnityTable
 
 #############################################################
 ################ COMPOSABLE ENRICHED OPERATIONS #############

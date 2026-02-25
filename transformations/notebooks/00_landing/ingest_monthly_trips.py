@@ -12,12 +12,13 @@ import sys
 
 # COMMAND ----------
 
-def register_component_location(location: str):
-    sys.path.append(location) 
+def register_project_root():
+    project_root = os.path.abspath(os.path.join(os.getcwd(), "../../.."))
 
-register_component_location("/Volume/Shared/nyc_project/transformations")
+    if project_root not in sys.path:
+        sys.path.append(project_root) 
 
-from utils.app_entities import MonthsAgo
+from modules.utils.app_entities import MonthsAgo
 
 
 # COMMAND ----------
