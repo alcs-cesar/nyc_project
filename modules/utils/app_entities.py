@@ -20,7 +20,7 @@ class MonthsAgo(Date):
 
     @classmethod
     def from_today(cls, months_ago: int = None):
-        return cls(date.today(), month_ago)
+        return cls(date.today(), months_ago)
 
     @classmethod
     def from_beginning_of_month(cls, ref_date: date, months_ago: int = None):
