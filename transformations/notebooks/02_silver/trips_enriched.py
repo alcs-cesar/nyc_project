@@ -73,6 +73,7 @@ class EnrichedModule:
     def run(self):
         self.enriched_trips.save(save_trips)
 
+    @classmethod
     def from_io_tables(cls, cleansed_table: str, zone_table: str, enriched_table: str):
         monthly_raw_trips = MonthlyTrips.from_table_and_date(cleansed_table) 
         zone_table = UnityTable(zone_table)
@@ -82,4 +83,4 @@ class EnrichedModule:
             save_trips = UnityTable(enriched_table)
         )
 
-EnrichedModule.from_io_tables(trips_cleansed_table, zone_table, trips_cleansed_table).run()
+EnrichedModule.from_io_tables(trips_cleansed_table, zone_table, trips_enriched_table).run()
