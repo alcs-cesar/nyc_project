@@ -36,4 +36,4 @@ class DateAsColumn(IColumn):
         self._date = date_value
 
     def column(self) -> Column:
-        return lit(f"{date.date()}").cast("date")
+        return lit(f"{self._date.date()}").cast("date")
