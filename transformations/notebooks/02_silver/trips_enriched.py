@@ -36,7 +36,6 @@ class EnrichedTrips(Enriched):
     def __init__(self, enriched: Enriched):
         self.enriched = enriched
 
-    @cached_property
     def data(self) -> DataFrame:
         self.enriched.data()
 
