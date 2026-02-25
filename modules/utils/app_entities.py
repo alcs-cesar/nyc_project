@@ -11,9 +11,12 @@ class Date(ABC):
         pass
 
 class MonthsAgo(Date):
-    def __init__(self, reference_date: date, months_ago: int = 3):
+
+    _PREVIOUS_MONTHS = 3
+
+    def __init__(self, reference_date: date, months_ago: int):
         self._reference_date = reference_date 
-        self._months_ago = months_ago
+        self._months_ago = MonthsAgo._PREVIOUS_MONTHS if months_ago is None else months_ago
 
     def date(self):
         return self._reference_date - relativedelta(months=self._months_ago)
