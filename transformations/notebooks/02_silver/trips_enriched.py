@@ -71,7 +71,7 @@ class EnrichedModule:
         self.save_trips = save_trips
 
     def run(self):
-        self.enriched_trips.save(save_trips)
+        self.enriched_trips.save(self.save_trips)
 
     @classmethod
     def from_io_tables(cls, cleansed_table: str, zone_table: str, enriched_table: str):
