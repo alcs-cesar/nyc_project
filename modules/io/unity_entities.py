@@ -27,7 +27,6 @@ class UnityTable(InputTrips, SaveTrips):
         self.table_name = table_name
         self.spark = SparkSession.builder.getOrCreate()
 
-    @cached_property
     def data(self) -> DataFrame:
         return self.spark.read.table(self.table_name)
 
@@ -39,7 +38,6 @@ class SchemedCsv(InputTrips, SaveTrips):
         self.qualified_name = qualified_name
         self.spark = SparkSession.builder.getOrCreate()
 
-    @cached_property
     def data(self) -> DataFrame:
         return self.spark.read.format("csv").options(header= True, inferSchema = True).load(self.qualified_name)
 
