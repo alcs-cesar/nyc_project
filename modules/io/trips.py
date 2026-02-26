@@ -39,11 +39,9 @@ class MonthlyTrips(InputTrips):
 
     @classmethod 
     def from_table_and_date(cls, trips_table: str, date: datetime | date = None):
+        months_ago =  MonthsAgo.from_current_month_first_day() if data is None else date
+
         return cls(
             trips = UnityTable(trips_table),
-            processing_date = DateAsColumn(MonthsAgo.from_current_month_first_day()).column()
+            processing_date = DateAsColumn(months_ago).column()
         )
-
-
-def _month_first_day(date: datetime | date) -> Column:
-    return lit(f"{date.year}-{date.month:02d}-01").cast("date")

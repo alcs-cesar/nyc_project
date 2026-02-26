@@ -1,3 +1,4 @@
 .python-version
 .venv-py312/
 .idea/
+ **/__pycache__/
