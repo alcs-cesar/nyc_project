@@ -1,5 +1,5 @@
-from pyspark.sql import Column
-from pyspark.sql.functions import lit
+from pyspark.sql import Column, DataFrame
+from pyspark.sql.functions import lit, date_format
 from abc import ABC, abstractmethod
 import sys
 import os
@@ -37,3 +37,6 @@ class DateAsColumn(IColumn):
 
     def column(self) -> Column:
         return lit(f"{self._date.date()}").cast("date")
+
+def with_year_month(df: DataFrame, timestamp_col: str, fmt: str, formatted_column: str = "year_month"): 
+    return df.withColumn( formatted_column, date_format(df[timestamp_col], fmt) )
