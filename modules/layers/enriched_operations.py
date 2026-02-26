@@ -21,7 +21,7 @@ def register_project_root():
 register_project_root()
 
 from modules.utils.app_entities import MonthsAgo
-from modules.io.contracts import InputTrips, SaveTrips
+from modules.io.contracts import InputTrips, SaveRawTrips
 from modules.io.unity_entities import UnityTable
 from modules.io.trips import MonthlyTrips
 

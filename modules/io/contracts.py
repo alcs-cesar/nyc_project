@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from pyspark.sql import DataFrame
+from pyspark.sql import DataFrame, DataFrameWriter
 
 ################ INPUT ##########################
 
@@ -11,7 +11,7 @@ class InputTrips(ABC):
 
 ################ OUTPUT ##########################
 
-class SaveTrips(ABC):
+class SaveRawTrips(ABC):
     @abstractmethod
-    def save(self, trips: DataFrame, mode: str):
+    def save(self, trips: DataFrameWriter):
         pass

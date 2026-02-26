@@ -14,19 +14,20 @@ def register_project_root():
 
 register_project_root()
 
-from modules.io.contracts import InputTrips
+from modules.io.contracts import InputTrips, SaveRawTrips
 from modules.io.configurated_save import ConfiguratedSave
 
 #########################################################
 
 
-class ExternalTable:
-    def __init__(self, table_name: str, external_location: str):
+class ExternalTable(SaveRawTrips):
+    def __init__(self, table_name: str, external_location: str, spark = None):
         self.table_name = table_name
         self.external_location = external_location
+        self.spark = SparkSession.builder.getOrCreate() if spark is None else spark
 
-    def save(self, writer: Callable[[], DataFrameWriter]): 
-        writer().saveAsTable(self.table_name)
+    def save(self, writer: DataFrameWriter): 
+        writer.saveAsTable(self.table_name)
 
     def data(self):
         self.spark.catalog.createTable(

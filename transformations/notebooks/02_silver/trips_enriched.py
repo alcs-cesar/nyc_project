@@ -24,7 +24,7 @@ def register_project_root():
 register_project_root()
 
 from modules.layers.enriched_operations import Enriched, TripDuration, DetailedLocations, NoEnriched
-from modules.io.contracts import InputTrips, SaveTrips
+from modules.io.contracts import InputTrips, SaveRawTrips
 from modules.io.trips import MonthlyTrips
 from modules.io.unity_entities import UnityTable
 
@@ -39,8 +39,8 @@ class EnrichedTrips(Enriched):
     def data(self) -> DataFrame:
         return self.enriched.data()
 
-    def save(self, save_trips: SaveTrips):
-        save_trips.save(self.data())
+    def save(self, save_trips: SaveRawTrips):
+        save_trips.save(self.data().write)
 
     @classmethod
     def from_trip_duration_and_zones(cls, raw_trips: InputTrips, taxi_zones: DataFrame):
@@ -58,7 +58,7 @@ class EnrichedTrips(Enriched):
 #############################################################
 
 # class EnrichedModule (declarative setup & method to trigger execution)
-# - EnrichedTrips & SaveTrips
+# - EnrichedTrips & SaveRawTrips
 # I/O Parameters
 trips_cleansed_table = "nyctaxi.silver.yellow_trips_cleansed"
 zone_table = "nyctaxi.silver.taxi_zone_lookup"
@@ -66,7 +66,7 @@ trips_enriched_table = "nyctaxi.silver.yellow_trips_enriched"
 
 
 class EnrichedModule:
-    def __init__(self, enriched_trips: Enriched, save_trips: SaveTrips):
+    def __init__(self, enriched_trips: Enriched, save_trips: SaveRawTrips):
         self.enriched_trips = enriched_trips
         self.save_trips = save_trips
 
