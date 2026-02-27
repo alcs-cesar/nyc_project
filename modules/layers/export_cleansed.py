@@ -1,5 +1,5 @@
 from pyspark.sql import DataFrame, DataFrameWriter
-from typing import List
+from typing import List, Callable
 
 import os
 import sys
