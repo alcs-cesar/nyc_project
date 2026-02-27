@@ -15,7 +15,6 @@ def register_project_root():
 register_project_root()
 
 from modules.io.contracts import InputTrips, SaveRawTrips
-from modules.io.configurated_save import ConfiguratedSave
 
 #########################################################
 
