@@ -39,7 +39,7 @@ class MonthlyTrips(InputTrips):
 
     @classmethod 
     def from_table_and_date(cls, trips_table: str, date: datetime | date = None):
-        months_ago =  MonthsAgo.from_current_month_first_day() if data is None else date
+        months_ago =  MonthsAgo.from_current_month_first_day() if date is None else date
 
         return cls(
             trips = UnityTable(trips_table),
