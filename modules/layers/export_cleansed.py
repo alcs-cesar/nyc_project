@@ -21,6 +21,7 @@ register_project_root()
 
 from modules.io.contracts import InputTrips, SaveRawTrips
 from modules.io.external_table import ExternalTable
+from modules.io.unity_entities import UnityTable
 from modules.io.trips import MonthlyTrips
 from modules.io.configurated_save import ConfigurableSave
 from modules.utils.columns import with_year_month
