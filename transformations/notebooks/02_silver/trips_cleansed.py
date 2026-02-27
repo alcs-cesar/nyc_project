@@ -121,10 +121,7 @@ def save_cleansed_trips(df: DataFrame, cleansed_loc: str):
 # COMMAND ----------
 
 def cleansed_trips():
-  raw_trips = MonthlyTrips.from_table_and_date(
-    trips_raw_table,
-    MonthsAgo.from_current_month_first_day().date(), 
-    ).data()
+  raw_trips = MonthlyTrips.from_table_and_date( trips_raw_table ).data()
 
   cleansed_trips = with_cleansed_cols(raw_trips)
   save_cleansed_trips(cleansed_trips, cleansed_trips_table)

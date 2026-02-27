@@ -17,7 +17,7 @@ register_project_root()
 
 from modules.io.contracts import InputTrips
 from modules.io.unity_entities import UnityTable
-from modules.utils.app_entities import MonthsAgo
+from modules.utils.app_entities import MonthsAgo, Same
 from modules.utils.columns import DateAsColumn
 
 #########################################################
@@ -39,7 +39,7 @@ class MonthlyTrips(InputTrips):
 
     @classmethod 
     def from_table_and_date(cls, trips_table: str, date: datetime | date = None):
-        months_ago =  MonthsAgo.from_current_month_first_day() if date is None else date
+        months_ago =  MonthsAgo.from_current_month_first_day() if date is None else Same(date)
 
         return cls(
             trips = UnityTable(trips_table),

@@ -10,6 +10,13 @@ class Date(ABC):
     def date(self) -> date:
         pass
 
+class Same(Date):
+    def __init__(self, date: date | datetime):
+        self.date = date
+
+    def date(self):
+        return self.date
+
 class MonthsAgo(Date):
 
     _PREVIOUS_MONTHS = 3
