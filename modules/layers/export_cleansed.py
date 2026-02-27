@@ -40,7 +40,7 @@ class ExportCleansed:
         cls, trips: InputTrips, raw_save: SaveRawTrips, final_writer: Callable[[DataFrameWriter], DataFrameWriter]
     ):
         final_trips = \
-            lambda t: with_year_month(t.data(), "tpep_pickup_datetime", "YYYY-MM", "year_month")
+            lambda t: with_year_month(t.data(), "tpep_pickup_datetime", "yyyy-MM", "year_month")
 
         common_writer = \
             lambda t: t.write.format("json").partitionBy(["vendor", "year_month"])
