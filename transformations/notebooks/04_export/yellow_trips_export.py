@@ -19,7 +19,7 @@ def register_project_root():
 
 register_project_root()
 
-from modules.layers.export_cleansed import export_monthly
+from modules.layers.export_enriched import export_monthly
 
 ####################################################################################
 

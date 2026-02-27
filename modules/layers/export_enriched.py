@@ -77,7 +77,7 @@ external_location = "abfss://nyctaxi-yellow@nyctaxistorage42.dfs.core.windows.ne
 resource_output_dir = "nyctaxi_yellow_export/"
 ext_resource_loc = external_location + resource_output_dir
 
-export_table = "nyctaxi.export.nyctaxi_yellow_trips_export"
+export_table = "nyctaxi.export.yellow_trips_export"
 
 # Input Parameters
 enriched_table = "nyctaxi.silver.yellow_trips_enriched"

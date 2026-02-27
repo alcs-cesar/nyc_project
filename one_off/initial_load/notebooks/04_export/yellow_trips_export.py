@@ -14,7 +14,7 @@ def register_project_root():
     if project_root not in sys.path:
         sys.path.append(project_root) 
 
-from modules.layers.export_cleansed import export_batch
+from modules.layers.export_enriched import export_batch
 
 ####################################################################################
 
