@@ -1,3 +1,7 @@
+# Databricks notebook source
+
+# COMMAND ----------
+
 from pyspark.sql import DataFrame
 from typing import List
 
@@ -21,6 +25,6 @@ register_project_root()
 
 from modules.layers.export_enriched import export_monthly
 
-####################################################################################
+# COMMAND ----------
 
 export_monthly()
