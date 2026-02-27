@@ -26,7 +26,7 @@ class ExternalTable(SaveRawTrips):
         self.spark = SparkSession.builder.getOrCreate() if spark is None else spark
 
     def save(self, writer: DataFrameWriter): 
-        writer.saveAsTable(self.table_name)
+        writer.option("path", self.external_location).saveAsTable(self.table_name)
 
     def data(self):
         self.spark.catalog.createTable(
